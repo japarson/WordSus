@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WordSus.Features.SurvivalMode.SurvivalModePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:WordSus.Features.SurvivalMode"
+    x:DataType="vm:SurvivalModeViewModel"
+    BackgroundColor="#6a5ae0"
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="Modal">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+
+        <Style
+            x:Key="OptionButton"
+            TargetType="Button">
+            <Setter Property="Background" Value="#fefefe" />
+            <Setter Property="HeightRequest" Value="75" />
+            <Setter Property="TextColor" Value="#6a5ae0" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+
+        <Style
+            x:Key="DefinitionButton"
+            TargetType="Button">
+            <Setter Property="Background" Value="#5b4dc3" />
+            <Setter Property="HeightRequest" Value="75" />
+            <Setter Property="TextColor" Value="#fefefe" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="32" />
+        </Style>
+
+        <Style
+            x:Key="NavigationButton"
+            TargetType="Button">
+            <Setter Property="Background" Value="#5b4dc3" />
+            <Setter Property="HeightRequest" Value="60" />
+            <Setter Property="TextColor" Value="#fefefe" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="32" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior
+            StatusBarColor="#6a5ae0"
+            StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+
+    <Grid
+        BackgroundColor="#6a5ae0"
+        RowDefinitions="auto,auto,auto,*,auto">
+        <Border
+            Grid.Row="0"
+            Margin="10,20,10,0"
+            Background="#ff8fa3"
+            HorizontalOptions="FillAndExpand"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            StrokeThickness="0">
+            <Label
+                FontAttributes="Bold"
+                FontSize="64"
+                HorizontalTextAlignment="Center"
+                Text="{Binding Level, StringFormat='#{0}'}"
+                TextColor="White" />
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Margin="10,20,10,0"
+            Padding="20"
+            Background="#877fda"
+            HorizontalOptions="FillAndExpand"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            StrokeThickness="0">
+            <Grid
+                RowDefinitions="auto,auto,auto,auto"
+                RowSpacing="16">
+                <!--  Option 1  -->
+                <Grid Grid.Row="0">
+                    <Grid IsVisible="{Binding IsResultEnabled, Converter={StaticResource InvertedBoolConverter}}">
+                        <Button
+                            x:Name="Option1"
+                            Clicked="Option1_Clicked"
+                            IsEnabled="True"
+                            Style="{StaticResource OptionButton}"
+                            Text="{Binding Option1.Word}" />
+                    </Grid>
+
+                    <Grid
+                        ColumnDefinitions="*,60"
+                        IsVisible="{Binding IsResultEnabled}">
+                        <Button
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="False"
+                            Style="{StaticResource OptionButton}"
+                            Text="{Binding Option1.Word}">
+                            <Button.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ShowOption1IsFake}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#ffb380" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding ShowOption1IsFake}"
+                                    TargetType="Button"
+                                    Value="False">
+                                    <Setter Property="TextColor" Value="#6a5ae0" />
+                                    <Setter Property="Background" Value="#fefefe" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button
+                            x:Name="Option1Definition"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            Clicked="Option1Definition_Clicked"
+                            IsVisible="{Binding ShowOption1Definition}"
+                            Style="{StaticResource DefinitionButton}"
+                            Text="?"
+                            WidthRequest="50" />
+                    </Grid>
+                </Grid>
+
+                <!--  Option 2  -->
+                <Grid Grid.Row="1">
+                    <Grid IsVisible="{Binding IsResultEnabled, Converter={StaticResource InvertedBoolConverter}}">
+                        <Button
+                            x:Name="Option2"
+                            Clicked="Option2_Clicked"
+                            IsEnabled="True"
+                            Style="{StaticResource OptionButton}"
+                            Text="{Binding Option2.Word}" />
+                    </Grid>
+
+                    <Grid
+                        ColumnDefinitions="*,60"
+                        IsVisible="{Binding IsResultEnabled}">
+                        <Button
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="False"
+                            Style="{StaticResource OptionButton}"
+                            Text="{Binding Option2.Word}">
+                            <Button.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ShowOption2IsFake}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#ffb380" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding ShowOption2IsFake}"
+                                    TargetType="Button"
+                                    Value="False">
+                                    <Setter Property="TextColor" Value="#6a5ae0" />
+                                    <Setter Property="Background" Value="#fefefe" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button
+                            x:Name="Option2Definition"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            Clicked="Option2Definition_Clicked"
+                            IsVisible="{Binding ShowOption2Definition}"
+                            Style="{StaticResource DefinitionButton}"
+                            Text="?"
+                            WidthRequest="50" />
+                    </Grid>
+                </Grid>
+
+                <!--  Option 3  -->
+                <Grid Grid.Row="2">
+                    <Grid IsVisible="{Binding IsResultEnabled, Converter={StaticResource InvertedBoolConverter}}">
+                        <Button
+                            x:Name="Option3"
+                            Clicked="Option3_Clicked"
+                            IsEnabled="True"
+                            Style="{StaticResource OptionButton}"
+                            Text="{Binding Option3.Word}" />
+                    </Grid>
+
+                    <Grid
+                        ColumnDefinitions="*,60"
+                        IsVisible="{Binding IsResultEnabled}">
+                        <Button
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="False"
+                            Style="{StaticResource OptionButton}"
+                            Text="{Binding Option3.Word}">
+                            <Button.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ShowOption3IsFake}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#ffb380" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding ShowOption3IsFake}"
+                                    TargetType="Button"
+                                    Value="False">
+                                    <Setter Property="TextColor" Value="#6a5ae0" />
+                                    <Setter Property="Background" Value="#fefefe" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button
+                            x:Name="Option3Definition"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            Clicked="Option3Definition_Clicked"
+                            IsVisible="{Binding ShowOption3Definition}"
+                            Style="{StaticResource DefinitionButton}"
+                            Text="?"
+                            WidthRequest="50" />
+                    </Grid>
+                </Grid>
+
+                <!--  Option 4  -->
+                <Grid Grid.Row="3">
+                    <Grid IsVisible="{Binding IsResultEnabled, Converter={StaticResource InvertedBoolConverter}}">
+                        <Button
+                            x:Name="Option4"
+                            Clicked="Option4_Clicked"
+                            IsEnabled="True"
+                            Style="{StaticResource OptionButton}"
+                            Text="{Binding Option4.Word}" />
+                    </Grid>
+
+                    <Grid
+                        ColumnDefinitions="*,60"
+                        IsVisible="{Binding IsResultEnabled}">
+                        <Button
+                            Grid.Column="0"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="False"
+                            Style="{StaticResource OptionButton}"
+                            Text="{Binding Option4.Word}" />
+
+                        <Button
+                            x:Name="Option4Definition"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            Clicked="Option4Definition_Clicked"
+                            IsVisible="{Binding ShowOption4Definition}"
+                            Style="{StaticResource DefinitionButton}"
+                            Text="?"
+                            WidthRequest="50">
+                            <Button.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ShowOption4IsFake}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#ffb380" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding ShowOption4IsFake}"
+                                    TargetType="Button"
+                                    Value="False">
+                                    <Setter Property="TextColor" Value="#6a5ae0" />
+                                    <Setter Property="Background" Value="#fefefe" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <Grid
+            Grid.Row="2"
+            Margin="0,50,0,0"
+            ColumnDefinitions="100,100,100"
+            HorizontalOptions="CenterAndExpand"
+            RowDefinitions="90">
+            <Image
+                Grid.Column="0"
+                Margin="30,0,30,0"
+                Aspect="AspectFill"
+                HeightRequest="90"
+                IsVisible="{Binding ShowFirstStrike}"
+                Source="strike.png"
+                WidthRequest="90" />
+
+            <Image
+                Grid.Column="1"
+                Margin="30,0,30,0"
+                Aspect="AspectFill"
+                HeightRequest="90"
+                IsVisible="{Binding ShowSecondStrike}"
+                Source="strike.png"
+                WidthRequest="90" />
+
+            <Image
+                Grid.Column="2"
+                Margin="30,0,30,0"
+                Aspect="AspectFill"
+                HeightRequest="90"
+                IsVisible="{Binding ShowThirdStrike}"
+                Source="strike.png"
+                WidthRequest="90" />
+        </Grid>
+
+        <Grid
+            Grid.Row="4"
+            Margin="10,0,10,10"
+            ColumnDefinitions="auto,*,auto"
+            RowDefinitions="*">
+            <HorizontalStackLayout Grid.Column="0">
+                <Button
+                    x:Name="MuteButton"
+                    Clicked="QuitButton_Clicked"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource NavigationButton}"
+                    Text="Mute" />
+
+                <Button
+                    x:Name="QuitButton"
+                    Margin="5,0,0,0"
+                    Clicked="QuitButton_Clicked"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource NavigationButton}"
+                    Text="Quit" />
+            </HorizontalStackLayout>
+
+            <Button
+                x:Name="NextButton"
+                Grid.Column="2"
+                Margin="5,0,0,0"
+                Clicked="NextButton_Clicked"
+                HorizontalOptions="End"
+                IsVisible="{Binding IsResultEnabled}"
+                Style="{StaticResource NavigationButton}"
+                Text="Next" />
+        </Grid>
+    </Grid>
+</ContentPage>

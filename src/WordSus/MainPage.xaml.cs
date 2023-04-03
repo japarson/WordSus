@@ -2,23 +2,24 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
 	public MainPage()
 	{
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    private async void SurvivalModeButton_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("survival");
+        // await Navigation.PushAsync(new SurvivalModePage());
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+    private void TimedModeButton_Clicked(object sender, EventArgs e)
+    {
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    }
+
+    private void HelpButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
-

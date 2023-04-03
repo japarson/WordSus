@@ -1,41 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WordSus.MainPage">
+<ContentPage
+    x:Class="WordSus.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarIsVisible="False">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+    <Grid>
+        <Image
+            Aspect="AspectFill"
+            IsAnimationPlaying="True"
+            Source="space.gif" />
+        <!--  nested grid. OR StackLayout, etc.  -->
+        <Grid>
+            <ScrollView>
+                <VerticalStackLayout
+                    Padding="30,0"
+                    Spacing="25"
+                    VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+                    <Label
+                        FontSize="32"
+                        HorizontalOptions="Center"
+                        SemanticProperties.HeadingLevel="Level1"
+                        Text="Suss Words" />
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+                    <Label
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        SemanticProperties.HeadingLevel="Level2"
+                        Text="A very crazy cool game!" />
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                    <Button
+                        x:Name="SurvivalModeButton"
+                        Clicked="SurvivalModeButton_Clicked"
+                        HorizontalOptions="Center"
+                        Text="Survival" />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                    <Button
+                        x:Name="TimedModeButton"
+                        Clicked="TimedModeButton_Clicked"
+                        HorizontalOptions="Center"
+                        Text="Timed" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+                    <Button
+                        x:Name="HelpButton"
+                        Clicked="HelpButton_Clicked"
+                        HorizontalOptions="Center"
+                        Text="Help" />
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
 
 </ContentPage>
