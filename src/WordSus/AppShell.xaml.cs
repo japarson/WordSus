@@ -9,5 +9,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("survival", typeof(Features.SurvivalMode.SurvivalModePage));
         Routing.RegisterRoute("survival/definition", typeof(Features.Definition.DefinitionPage));
         Routing.RegisterRoute("survival/gameover", typeof(Features.GameOver.GameOverPage));
+        Routing.RegisterRoute("help", typeof(Features.Help.HelpPage));
     }
 }

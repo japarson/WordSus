@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WordSus.Features.GameOver.GameOverPage"
-             xmlns:go="clr-namespace:WordSus.Features.GameOver"
-             x:DataType="go:GameOverPage"
-             Title="GameOverPage">
+<ContentPage
+    x:Class="WordSus.Features.GameOver.GameOverPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:go="clr-namespace:WordSus.Features.GameOver"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="GameOverPage"
+    x:DataType="go:GameOverPage"
+    BackgroundColor="#6a5ae0">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior
+            StatusBarColor="#6a5ae0"
+            StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+
     <VerticalStackLayout Margin="20">
         <Label
-            Text="Game Over"
             FontSize="64"
-            VerticalOptions="Center"
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            Text="Game Over"
+            VerticalOptions="Center" />
 
-        <Label Text="😭" FontSize="240" HorizontalTextAlignment="Center" />
+        <Label
+            FontSize="240"
+            HorizontalTextAlignment="Center"
+            Text="😭" />
 
-        <Label Text="{Binding FinalScore, StringFormat='You made it to level {0}!!!'}" Margin="0,20,0,0" FontSize="Large" HorizontalTextAlignment="Center" />
+        <Label
+            Margin="0,20,0,0"
+            FontSize="Large"
+            HorizontalTextAlignment="Center"
+            Text="{Binding FinalScore, StringFormat='You made it to level {0}!!!'}" />
 
-        <Button Text="Play Again?" Clicked="PlayAgainButton_Clicked" Margin="0,20,0,0" HorizontalOptions="Center" />
+        <Button
+            Margin="0,20,0,0"
+            Clicked="PlayAgainButton_Clicked"
+            HorizontalOptions="Center"
+            Text="Play Again?" />
     </VerticalStackLayout>
 </ContentPage>

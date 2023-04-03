@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using WordSus.Features.Definition;
 using WordSus.Features.GameOver;
+using WordSus.Features.Help;
 using WordSus.Features.SurvivalMode;
 using WordSus.Services;
 
@@ -49,6 +50,7 @@ public static class MauiProgram
 		mauiAppBuilder.Services.AddTransient<SurvivalModePage>();
 		mauiAppBuilder.Services.AddTransient<DefinitionPage>();
 		mauiAppBuilder.Services.AddTransient<GameOverPage>();
+		mauiAppBuilder.Services.AddTransient<HelpPage>();
 		return mauiAppBuilder;
 	}
 }

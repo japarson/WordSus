@@ -67,6 +67,9 @@
 	  <MauiXaml Update="Features\GameOver\GameOverPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Features\Help\HelpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Features\SurvivalMode\SurvivalModePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

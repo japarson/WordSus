@@ -5,9 +5,9 @@ public partial class GameOverPage : ContentPage
 {
     private int finalScore;
 
-	public GameOverPage()
-	{
-		InitializeComponent();
+    public GameOverPage()
+    {
+        InitializeComponent();
         BindingContext = this;
     }
 

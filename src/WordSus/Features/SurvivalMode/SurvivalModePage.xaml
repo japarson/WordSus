@@ -7,8 +7,7 @@
     xmlns:vm="clr-namespace:WordSus.Features.SurvivalMode"
     x:DataType="vm:SurvivalModeViewModel"
     BackgroundColor="#6a5ae0"
-    Shell.NavBarIsVisible="False"
-    Shell.PresentationMode="Modal">
+    Shell.NavBarIsVisible="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -254,17 +253,7 @@
                             HorizontalOptions="FillAndExpand"
                             IsEnabled="False"
                             Style="{StaticResource OptionButton}"
-                            Text="{Binding Option4.Word}" />
-
-                        <Button
-                            x:Name="Option4Definition"
-                            Grid.Column="1"
-                            Margin="10,0,0,0"
-                            Clicked="Option4Definition_Clicked"
-                            IsVisible="{Binding ShowOption4Definition}"
-                            Style="{StaticResource DefinitionButton}"
-                            Text="?"
-                            WidthRequest="50">
+                            Text="{Binding Option4.Word}">
                             <Button.Triggers>
                                 <DataTrigger
                                     Binding="{Binding ShowOption4IsFake}"
@@ -283,6 +272,16 @@
                                 </DataTrigger>
                             </Button.Triggers>
                         </Button>
+
+                        <Button
+                            x:Name="Option4Definition"
+                            Grid.Column="1"
+                            Margin="10,0,0,0"
+                            Clicked="Option4Definition_Clicked"
+                            IsVisible="{Binding ShowOption4Definition}"
+                            Style="{StaticResource DefinitionButton}"
+                            Text="?"
+                            WidthRequest="50" />
                     </Grid>
                 </Grid>
             </Grid>

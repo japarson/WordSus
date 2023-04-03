@@ -1,15 +1,14 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using System.ComponentModel;
-using WordSus.Features.Definition;
 
 namespace WordSus.Features.SurvivalMode;
 
 public partial class SurvivalModePage : ContentPage
 {
-	public SurvivalModePage(SurvivalModeViewModel survivalModeViewModel)
-	{
-		InitializeComponent();
+    public SurvivalModePage(SurvivalModeViewModel survivalModeViewModel)
+    {
+        InitializeComponent();
 
         BindingContext = survivalModeViewModel;
 

@@ -3,54 +3,56 @@
     x:Class="WordSus.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    BackgroundColor="#6a5ae0"
     Shell.NavBarIsVisible="False">
 
-    <Grid>
-        <Image
-            Aspect="AspectFill"
-            IsAnimationPlaying="True"
-            Source="space.gif" />
-        <!--  nested grid. OR StackLayout, etc.  -->
-        <Grid>
-            <ScrollView>
-                <VerticalStackLayout
-                    Padding="30,0"
-                    Spacing="25"
-                    VerticalOptions="Center">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior
+            StatusBarColor="#6a5ae0"
+            StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
 
-                    <Label
-                        FontSize="32"
-                        HorizontalOptions="Center"
-                        SemanticProperties.HeadingLevel="Level1"
-                        Text="Suss Words" />
+    <ContentPage.Resources>
+        <Style
+            x:Key="OptionButton"
+            TargetType="Button">
+            <Setter Property="Background" Value="#ff8fa3" />
+            <Setter Property="HeightRequest" Value="75" />
+            <Setter Property="TextColor" Value="#fefefe" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="WidthRequest" Value="250" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+    </ContentPage.Resources>
 
-                    <Label
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        SemanticProperties.HeadingLevel="Level2"
-                        Text="A very crazy cool game!" />
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25"
+        VerticalOptions="Center">
 
-                    <Button
-                        x:Name="SurvivalModeButton"
-                        Clicked="SurvivalModeButton_Clicked"
-                        HorizontalOptions="Center"
-                        Text="Survival" />
+        <Label
+            FontAttributes="Bold"
+            FontSize="60"
+            HorizontalTextAlignment="Center"
+            Text="Suss Words"
+            TextColor="White" />
 
-                    <Button
-                        x:Name="TimedModeButton"
-                        Clicked="TimedModeButton_Clicked"
-                        HorizontalOptions="Center"
-                        Text="Timed" />
+        <Button
+            x:Name="SurvivalModeButton"
+            Margin="0,100,0,0"
+            Clicked="SurvivalModeButton_Clicked"
+            HorizontalOptions="Center"
+            Style="{StaticResource OptionButton}"
+            Text="Play" />
 
-                    <Button
-                        x:Name="HelpButton"
-                        Clicked="HelpButton_Clicked"
-                        HorizontalOptions="Center"
-                        Text="Help" />
-
-                </VerticalStackLayout>
-            </ScrollView>
-        </Grid>
-    </Grid>
+        <Button
+            x:Name="HelpButton"
+            Clicked="HelpButton_Clicked"
+            HorizontalOptions="Center"
+            Style="{StaticResource OptionButton}"
+            Text="Help" />
+    </VerticalStackLayout>
 
 </ContentPage>
