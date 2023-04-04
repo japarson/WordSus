@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Plugin.Maui.Audio;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using WordSus.Extensions;
 using WordSus.Models;
@@ -13,8 +14,12 @@ public class SurvivalModeViewModel : INotifyPropertyChanged
     private readonly FakeWordService fakeWordService;
     private readonly RandomWordService randomWordService;
 
-    private int level;
+    private readonly IAudioManager audioManager;
+    private IAudioPlayer correctPlayer;
+    private IAudioPlayer wrongPlayer;
 
+    private int level;
+    private bool isCorrect;
     private bool isResultEnabled;
 
     private OptionWord option1;
@@ -26,16 +31,30 @@ public class SurvivalModeViewModel : INotifyPropertyChanged
 
     public SurvivalModeViewModel(
         FakeWordService fakeWordService,
-        RandomWordService randomWordService)
+        RandomWordService randomWordService,
+        IAudioManager audioManager)
     {
         this.fakeWordService = fakeWordService;
         this.randomWordService = randomWordService;
 
+        this.audioManager = audioManager;
+        Task.Run(LoadAudio);
+
         level = 1;
+        isCorrect = false;
         isResultEnabled = false;
         remainingLives = 3;
 
         Task.Run(RefreshOptionsAsync);
+    }
+
+    private async Task LoadAudio()
+    {
+        var correctStream = await FileSystem.OpenAppPackageFileAsync("correct.mp3");
+        correctPlayer = audioManager.CreatePlayer(correctStream);
+
+        var wrongStream = await FileSystem.OpenAppPackageFileAsync("wrong.mp3");
+        wrongPlayer = audioManager.CreatePlayer(wrongStream);
     }
 
     public int Level
@@ -48,6 +67,20 @@ public class SurvivalModeViewModel : INotifyPropertyChanged
         set
         {
             level = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public bool IsCorrect
+    {
+        get
+        {
+            return isCorrect;
+        }
+
+        set
+        {
+            isCorrect = value;
             OnPropertyChanged();
         }
     }
@@ -186,6 +219,70 @@ public class SurvivalModeViewModel : INotifyPropertyChanged
         }
     }
 
+    public bool Option1FakeAndCorrect
+    {
+        get
+        {
+            return ShowOption1IsFake && IsCorrect;
+        }
+    }
+
+    public bool Option2FakeAndCorrect
+    {
+        get
+        {
+            return ShowOption2IsFake && IsCorrect;
+        }
+    }
+
+    public bool Option3FakeAndCorrect
+    {
+        get
+        {
+            return ShowOption3IsFake && IsCorrect;
+        }
+    }
+
+    public bool Option4FakeAndCorrect
+    {
+        get
+        {
+            return ShowOption4IsFake && IsCorrect;
+        }
+    }
+
+    public bool Option1FakeAndIncorrect
+    {
+        get
+        {
+            return ShowOption1IsFake && !IsCorrect;
+        }
+    }
+
+    public bool Option2FakeAndIncorrect
+    {
+        get
+        {
+            return ShowOption2IsFake && !IsCorrect;
+        }
+    }
+
+    public bool Option3FakeAndIncorrect
+    {
+        get
+        {
+            return ShowOption3IsFake && !IsCorrect;
+        }
+    }
+
+    public bool Option4FakeAndIncorrect
+    {
+        get
+        {
+            return ShowOption4IsFake && !IsCorrect;
+        }
+    }
+
     public int RemainingLives
     {
         get
@@ -303,11 +400,17 @@ public class SurvivalModeViewModel : INotifyPropertyChanged
     {
         if (isFake)
         {
+            IsCorrect = true;
             OnPropertyChanged("CorrectAnswer");
+
+            correctPlayer.Play();
         }
         else
         {
+            IsCorrect = false;
             OnPropertyChanged("WrongAnswer");
+
+            wrongPlayer.Play();
 
             RemainingLives -= 1;
         }
@@ -323,6 +426,7 @@ public class SurvivalModeViewModel : INotifyPropertyChanged
         {
             IsResultEnabled = false;
             Level += 1;
+            IsCorrect = false;
 
             await RefreshOptionsAsync();
             PropertyChangeResultViews();
@@ -343,6 +447,14 @@ public class SurvivalModeViewModel : INotifyPropertyChanged
         OnPropertyChanged(nameof(ShowOption2IsFake));
         OnPropertyChanged(nameof(ShowOption3IsFake));
         OnPropertyChanged(nameof(ShowOption4IsFake));
+        OnPropertyChanged(nameof(Option1FakeAndCorrect));
+        OnPropertyChanged(nameof(Option2FakeAndCorrect));
+        OnPropertyChanged(nameof(Option3FakeAndCorrect));
+        OnPropertyChanged(nameof(Option4FakeAndCorrect));
+        OnPropertyChanged(nameof(Option1FakeAndIncorrect));
+        OnPropertyChanged(nameof(Option2FakeAndIncorrect));
+        OnPropertyChanged(nameof(Option3FakeAndIncorrect));
+        OnPropertyChanged(nameof(Option4FakeAndIncorrect));
     }
 
     public void OnPropertyChanged([CallerMemberName] string name = "") =>

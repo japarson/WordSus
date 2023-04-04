@@ -17,7 +17,7 @@
         <Style
             x:Key="OptionButton"
             TargetType="Button">
-            <Setter Property="Background" Value="#ff8fa3" />
+            <Setter Property="Background" Value="#ffb380" />
             <Setter Property="HeightRequest" Value="75" />
             <Setter Property="TextColor" Value="#fefefe" />
             <Setter Property="FontAttributes" Value="Bold" />
@@ -39,9 +39,12 @@
             Text="Suss Words"
             TextColor="White" />
 
+        <Image
+            IsAnimationPlaying="True"
+            Source="dance.gif" />
+
         <Button
             x:Name="SurvivalModeButton"
-            Margin="0,100,0,0"
             Clicked="SurvivalModeButton_Clicked"
             HorizontalOptions="Center"
             Style="{StaticResource OptionButton}"

@@ -7,7 +7,22 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="GameOverPage"
     x:DataType="go:GameOverPage"
-    BackgroundColor="#6a5ae0">
+    BackgroundColor="#6a5ae0"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Resources>
+        <Style
+            x:Key="OptionButton"
+            TargetType="Button">
+            <Setter Property="Background" Value="#ffb380" />
+            <Setter Property="HeightRequest" Value="75" />
+            <Setter Property="TextColor" Value="#fefefe" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="WidthRequest" Value="250" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        </Style>
+    </ContentPage.Resources>
 
     <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior
@@ -15,28 +30,39 @@
             StatusBarStyle="LightContent" />
     </ContentPage.Behaviors>
 
-    <VerticalStackLayout Margin="20">
+    <Grid
+        Padding="20"
+        RowDefinitions="auto,auto,auto,*,auto">
         <Label
+            Grid.Row="0"
+            FontAttributes="Bold"
             FontSize="64"
             HorizontalOptions="Center"
             Text="Game Over"
+            TextColor="#fefefe"
             VerticalOptions="Center" />
 
         <Label
+            Grid.Row="1"
             FontSize="240"
             HorizontalTextAlignment="Center"
             Text="😭" />
 
         <Label
+            Grid.Row="2"
             Margin="0,20,0,0"
-            FontSize="Large"
+            FontAttributes="Bold"
+            FontSize="36"
             HorizontalTextAlignment="Center"
-            Text="{Binding FinalScore, StringFormat='You made it to level {0}!!!'}" />
+            Text="{Binding FinalScore, StringFormat='Final Score: {0}'}"
+            TextColor="#fefefe" />
 
         <Button
-            Margin="0,20,0,0"
+            Grid.Row="4"
+            Margin="0,20,0,20"
             Clicked="PlayAgainButton_Clicked"
             HorizontalOptions="Center"
+            Style="{StaticResource OptionButton}"
             Text="Play Again?" />
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

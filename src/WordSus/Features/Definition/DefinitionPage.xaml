@@ -4,16 +4,48 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:def="clr-namespace:WordSus.Features.Definition"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="DefinitionPage"
-    x:DataType="def:DefinitionPage">
-    <VerticalStackLayout>
-        <Label
-            FontSize="Large"
-            HorizontalOptions="Center"
-            Text="{Binding OptionWord.Word}" />
+    x:DataType="def:DefinitionPage"
+    BackgroundColor="#6a5ae0"
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="Modal">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior
+            StatusBarColor="#6a5ae0"
+            StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+
+    <VerticalStackLayout Padding="20">
+        <Button
+            Background="#ff8fa3"
+            Clicked="CloseButton_Clicked"
+            ContentLayout="Center"
+            FontAttributes="Bold"
+            HorizontalOptions="End"
+            ImageSource="close.png"
+            TextColor="#fefefe" />
 
         <Label
-            Margin="20"
-            Text="{Binding OptionWord.Definition}" />
+            Margin="0,20,0,0"
+            FontAttributes="Bold"
+            FontSize="48"
+            HorizontalOptions="Center"
+            Text="{Binding OptionWord.Word}"
+            TextColor="#fefefe" />
+
+        <Border
+            Margin="0,20,0,0"
+            Padding="20"
+            Background="#877fda"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            StrokeThickness="0">
+            <Label
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="{Binding OptionWord.Definition}"
+                TextColor="#fefefe" />
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

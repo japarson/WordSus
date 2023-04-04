@@ -8,8 +8,8 @@ public partial class DefinitionPage : ContentPage
     OptionWord optionWord;
 
     public DefinitionPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         BindingContext = this;
     }
 
@@ -22,5 +22,10 @@ public partial class DefinitionPage : ContentPage
             optionWord = value;
             OnPropertyChanged();
         }
+    }
+
+    private async void CloseButton_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
     }
 }

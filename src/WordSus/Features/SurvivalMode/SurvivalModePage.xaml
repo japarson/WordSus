@@ -58,7 +58,7 @@
         <Border
             Grid.Row="0"
             Margin="10,20,10,0"
-            Background="#ff8fa3"
+            Background="#ffb380"
             HorizontalOptions="FillAndExpand"
             StrokeShape="RoundRectangle 10,10,10,10"
             StrokeThickness="0">
@@ -105,17 +105,25 @@
                                 <DataTrigger
                                     Binding="{Binding ShowOption1IsFake}"
                                     TargetType="Button"
-                                    Value="True">
-                                    <Setter Property="TextColor" Value="#fefefe" />
-                                    <Setter Property="Background" Value="#ffb380" />
-                                </DataTrigger>
-
-                                <DataTrigger
-                                    Binding="{Binding ShowOption1IsFake}"
-                                    TargetType="Button"
                                     Value="False">
                                     <Setter Property="TextColor" Value="#6a5ae0" />
                                     <Setter Property="Background" Value="#fefefe" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding Option1FakeAndCorrect}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#5bd7bc" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding Option1FakeAndIncorrect}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#ff8fa3" />
                                 </DataTrigger>
                             </Button.Triggers>
                         </Button>
@@ -156,17 +164,25 @@
                                 <DataTrigger
                                     Binding="{Binding ShowOption2IsFake}"
                                     TargetType="Button"
-                                    Value="True">
-                                    <Setter Property="TextColor" Value="#fefefe" />
-                                    <Setter Property="Background" Value="#ffb380" />
-                                </DataTrigger>
-
-                                <DataTrigger
-                                    Binding="{Binding ShowOption2IsFake}"
-                                    TargetType="Button"
                                     Value="False">
                                     <Setter Property="TextColor" Value="#6a5ae0" />
                                     <Setter Property="Background" Value="#fefefe" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding Option2FakeAndCorrect}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#5bd7bc" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding Option2FakeAndIncorrect}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#ff8fa3" />
                                 </DataTrigger>
                             </Button.Triggers>
                         </Button>
@@ -207,17 +223,25 @@
                                 <DataTrigger
                                     Binding="{Binding ShowOption3IsFake}"
                                     TargetType="Button"
-                                    Value="True">
-                                    <Setter Property="TextColor" Value="#fefefe" />
-                                    <Setter Property="Background" Value="#ffb380" />
-                                </DataTrigger>
-
-                                <DataTrigger
-                                    Binding="{Binding ShowOption3IsFake}"
-                                    TargetType="Button"
                                     Value="False">
                                     <Setter Property="TextColor" Value="#6a5ae0" />
                                     <Setter Property="Background" Value="#fefefe" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding Option3FakeAndCorrect}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#5bd7bc" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding Option3FakeAndIncorrect}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#ff8fa3" />
                                 </DataTrigger>
                             </Button.Triggers>
                         </Button>
@@ -258,17 +282,25 @@
                                 <DataTrigger
                                     Binding="{Binding ShowOption4IsFake}"
                                     TargetType="Button"
-                                    Value="True">
-                                    <Setter Property="TextColor" Value="#fefefe" />
-                                    <Setter Property="Background" Value="#ffb380" />
-                                </DataTrigger>
-
-                                <DataTrigger
-                                    Binding="{Binding ShowOption4IsFake}"
-                                    TargetType="Button"
                                     Value="False">
                                     <Setter Property="TextColor" Value="#6a5ae0" />
                                     <Setter Property="Background" Value="#fefefe" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding Option4FakeAndCorrect}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#5bd7bc" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding Option4FakeAndIncorrect}"
+                                    TargetType="Button"
+                                    Value="True">
+                                    <Setter Property="TextColor" Value="#fefefe" />
+                                    <Setter Property="Background" Value="#ff8fa3" />
                                 </DataTrigger>
                             </Button.Triggers>
                         </Button>

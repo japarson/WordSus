@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using Plugin.Maui.Audio;
 using System.ComponentModel;
 
 namespace WordSus.Features.SurvivalMode;

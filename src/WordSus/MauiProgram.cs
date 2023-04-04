@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Plugin.Maui.Audio;
 using WordSus.Features.Definition;
 using WordSus.Features.GameOver;
 using WordSus.Features.Help;
@@ -20,7 +21,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			})
-            .UseMauiCommunityToolkit()
+			.UseMauiCommunityToolkit()
 			.RegisterServices()
 			.RegisterViewModels()
 			.RegisterPages();
@@ -36,6 +37,7 @@ public static class MauiProgram
     {
         mauiAppBuilder.Services.AddSingleton<FakeWordService>();
         mauiAppBuilder.Services.AddSingleton<RandomWordService>();
+        mauiAppBuilder.Services.AddSingleton(AudioManager.Current);
         return mauiAppBuilder;
     }
 
@@ -47,6 +49,7 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterPages(this MauiAppBuilder mauiAppBuilder)
 	{
+		mauiAppBuilder.Services.AddTransient<MainPage>();
 		mauiAppBuilder.Services.AddTransient<SurvivalModePage>();
 		mauiAppBuilder.Services.AddTransient<DefinitionPage>();
 		mauiAppBuilder.Services.AddTransient<GameOverPage>();
