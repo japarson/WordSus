@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
-		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<MajorFrameworkVersion>8.0</MajorFrameworkVersion>
+		<TargetFrameworks>net$(MajorFrameworkVersion)-android;net$(MajorFrameworkVersion)-ios;net$(MajorFrameworkVersion)-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net$(MajorFrameworkVersion)-windows10.0.19041.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>WordSus</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -12,7 +11,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>WordSus</ApplicationTitle>
+		<ApplicationTitle>Suss Words</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.wordsus</ApplicationId>
@@ -32,7 +31,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -48,10 +47,10 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Remove="Resources\Images\background.gif" />
-	  <None Remove="Resources\Images\space.gif" />
-	  <None Remove="Resources\Images\strike.png" />
+	<!-- https://dev.azure.com/xamarin/public/_artifacts/feed/maui-nightly -->
+	<ItemGroup Condition="$(MajorFrameworkVersion) &gt;= 8.0">
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-nightly.9550+sha.f6956cbdd1-azdo.8635773" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.0-nightly.9550+sha.f6956cbdd1-azdo.8635773" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -59,21 +58,6 @@
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Plugin.Maui.Audio" Version="1.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Features\Definition\DefinitionPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Features\GameOver\GameOverPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Features\Help\HelpPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Features\SurvivalMode\SurvivalModePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
