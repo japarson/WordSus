@@ -1,126 +1,110 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="WordSus.Features.Help.HelpPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    Title="HelpPage"
-    BackgroundColor="#6a5ae0"
-    Shell.NavBarIsVisible="False"
-    Shell.PresentationMode="Modal">
+<ContentPage x:Class="WordSus.Features.Help.HelpPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="HelpPage"
+             BackgroundColor="#6a5ae0"
+             Shell.NavBarIsVisible="False"
+             Shell.PresentationMode="Modal">
 
     <ContentPage.Behaviors>
-        <toolkit:StatusBarBehavior
-            StatusBarColor="#6a5ae0"
-            StatusBarStyle="LightContent" />
+        <toolkit:StatusBarBehavior StatusBarColor="#6a5ae0"
+                                   StatusBarStyle="LightContent" />
     </ContentPage.Behaviors>
 
-    <Grid
-        Padding="20"
-        RowDefinitions="auto,auto,auto,auto,*">
-        <Button
-            Background="#ff8fa3"
-            Clicked="CloseButton_Clicked"
-            ContentLayout="Center"
-            FontAttributes="Bold"
-            HorizontalOptions="End"
-            ImageSource="close.png"
-            TextColor="#fefefe" />
+    <Grid Padding="20"
+          RowDefinitions="auto,auto,auto,auto,*">
+        <Button Background="#ff8fa3"
+                Clicked="CloseButton_Clicked"
+                ContentLayout="Center"
+                FontAttributes="Bold"
+                HorizontalOptions="End"
+                ImageSource="close.png"
+                TextColor="#fefefe" />
 
-        <Border
-            Grid.Row="1"
-            Margin="0,20,0,0"
-            Padding="20"
-            Background="#877fda"
-            StrokeShape="RoundRectangle 10,10,10,10"
-            StrokeThickness="0">
+        <Border Grid.Row="1"
+                Margin="0,20,0,0"
+                Padding="20"
+                Background="#877fda"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="0">
             <VerticalStackLayout>
-                <Border
-                    Background="#ffb380"
-                    StrokeShape="RoundRectangle 100,100,100,100"
-                    StrokeThickness="0"
-                    WidthRequest="80">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="28"
-                        HorizontalOptions="Center"
-                        Text="1"
-                        TextColor="#fefefe" />
+                <Border Background="#ffb380"
+                        StrokeShape="RoundRectangle 100,100,100,100"
+                        StrokeThickness="0"
+                        WidthRequest="80">
+                    <Label FontAttributes="Bold"
+                           FontSize="28"
+                           HorizontalOptions="Center"
+                           Text="1"
+                           TextColor="#fefefe" />
                 </Border>
 
-                <Label
-                    Margin="0,10,0,0"
-                    FontAttributes="Bold"
-                    FontSize="26"
-                    HorizontalTextAlignment="Start"
-                    Text="You will be presented with three words from Urban Dictionary and one word that is completely made up."
-                    TextColor="#fefefe"
-                    VerticalTextAlignment="Start" />
+                <Label Margin="0,10,0,0"
+                       FontAttributes="Bold"
+                       FontSize="26"
+                       HorizontalTextAlignment="Start"
+                       Text="You will be presented with three words from Urban Dictionary and one word that is completely made up."
+                       TextColor="#fefefe"
+                       VerticalTextAlignment="Start" />
             </VerticalStackLayout>
         </Border>
 
-        <Border
-            Grid.Row="2"
-            Margin="0,20,0,0"
-            Padding="20"
-            Background="#877fda"
-            StrokeShape="RoundRectangle 10,10,10,10"
-            StrokeThickness="0">
+        <Border Grid.Row="2"
+                Margin="0,20,0,0"
+                Padding="20"
+                Background="#877fda"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="0">
             <VerticalStackLayout>
-                <Border
-                    Background="#ffb380"
-                    StrokeShape="RoundRectangle 100,100,100,100"
-                    StrokeThickness="0"
-                    WidthRequest="80">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="28"
-                        HorizontalOptions="Center"
-                        Text="2"
-                        TextColor="#fefefe" />
+                <Border Background="#ffb380"
+                        StrokeShape="RoundRectangle 100,100,100,100"
+                        StrokeThickness="0"
+                        WidthRequest="80">
+                    <Label FontAttributes="Bold"
+                           FontSize="28"
+                           HorizontalOptions="Center"
+                           Text="2"
+                           TextColor="#fefefe" />
                 </Border>
 
-                <Label
-                    Margin="0,10,0,0"
-                    FontAttributes="Bold"
-                    FontSize="26"
-                    HorizontalTextAlignment="Start"
-                    Text="Your goal is to determine which is the 'suss' word."
-                    TextColor="#fefefe"
-                    VerticalTextAlignment="Start" />
+                <Label Margin="0,10,0,0"
+                       FontAttributes="Bold"
+                       FontSize="26"
+                       HorizontalTextAlignment="Start"
+                       Text="Your goal is to determine which is the 'suss' word."
+                       TextColor="#fefefe"
+                       VerticalTextAlignment="Start" />
             </VerticalStackLayout>
         </Border>
 
-        <Border
-            Grid.Row="3"
-            Margin="0,20,0,0"
-            Padding="20"
-            Background="#877fda"
-            StrokeShape="RoundRectangle 10,10,10,10"
-            StrokeThickness="0">
+        <Border Grid.Row="3"
+                Margin="0,20,0,0"
+                Padding="20"
+                Background="#877fda"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="0">
 
             <VerticalStackLayout>
-                <Border
-                    Background="#ffb380"
-                    StrokeShape="RoundRectangle 100,100,100,100"
-                    StrokeThickness="0"
-                    WidthRequest="80">
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="28"
-                        HorizontalOptions="Center"
-                        Text="3"
-                        TextColor="#fefefe" />
+                <Border Background="#ffb380"
+                        StrokeShape="RoundRectangle 100,100,100,100"
+                        StrokeThickness="0"
+                        WidthRequest="80">
+                    <Label FontAttributes="Bold"
+                           FontSize="28"
+                           HorizontalOptions="Center"
+                           Text="3"
+                           TextColor="#fefefe" />
                 </Border>
 
-                <Label
-                    Margin="0,10,0,0"
-                    FontAttributes="Bold"
-                    FontSize="26"
-                    HorizontalTextAlignment="Start"
-                    Text="Three strikes and you're out!"
-                    TextColor="#fefefe"
-                    VerticalTextAlignment="Start" />
+                <Label Margin="0,10,0,0"
+                       FontAttributes="Bold"
+                       FontSize="26"
+                       HorizontalTextAlignment="Start"
+                       Text="Three strikes and you're out!"
+                       TextColor="#fefefe"
+                       VerticalTextAlignment="Start" />
             </VerticalStackLayout>
         </Border>
     </Grid>
